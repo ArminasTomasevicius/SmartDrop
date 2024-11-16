@@ -1,22 +1,22 @@
 import { Flex, Text } from "@chakra-ui/react";
 
-export default function UnauthorizedNavbar({}: {}) {
+export default function Footer({}: {}) {
   return (
     <Flex
       w="95%"
-      h={20}
-      mx="auto"
+      h={5}
       align="center"
       justify="space-between"
       borderTop="1px solid #454545"
       borderBottom="1px solid #454545"
+      position="fixed"
+      bottom={5}
+      py={5}
+      left="50%" // Center relative to the viewport
+      transform="translateX(-50%)" // Adjust position to center
     >
       <Text px={8}>LOGO</Text>
-      <Flex gap={8} p={8}>
-        <Text>Users online: 213</Text>
-        <Text>Total Users: 30,738</Text>
-        <Text>Total Value Locked: $302M</Text>
-      </Flex>
+      <Text px={8}>2024</Text>
     </Flex>
   );
 }
