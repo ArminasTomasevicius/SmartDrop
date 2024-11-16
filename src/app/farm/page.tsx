@@ -124,8 +124,12 @@ export default function Farm() {
                 <Text>{farm.totalStakedLiquidity}</Text>
               </Flex>
               <Flex gap={4}>
-                <Button borderRadius="3xl">Boost</Button>
-                <Button borderRadius="3xl">Manage</Button>
+                <Button borderRadius="3xl" disabled>
+                  Boost
+                </Button>
+                <Button borderRadius="3xl" disabled>
+                  Manage
+                </Button>
               </Flex>
             </Flex>
           ))}
