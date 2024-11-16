@@ -1,48 +1,67 @@
+"use client";
 import { chakra, Flex, Input, Text } from "@chakra-ui/react";
+import { useState } from "react";
 
 export default function Leaderbord() {
   const leaderbord = [
     {
       name: "amacaseybae",
+      place: 1,
       points: "0.00102",
     },
     {
       name: "amacaseybae",
+      place: 2,
       points: "0.00102",
     },
     {
       name: "amacaseybae",
+      place: 3,
       points: "0.00102",
     },
     {
       name: "amacaseybae",
+      place: 4,
       points: "0.00102",
     },
     {
       name: "amacaseybae",
+      place: 5,
       points: "0.00102",
     },
     {
       name: "amacaseybae",
+      place: 6,
       points: "0.00102",
     },
     {
       name: "amacaseybae",
+      place: 7,
       points: "0.00102",
     },
     {
       name: "amacaseybae",
+      place: 8,
       points: "0.00102",
     },
     {
       name: "amacaseybae",
+      place: 9,
       points: "0.00102",
     },
     {
       name: "amcaseybae",
+      place: 10,
       points: "0.00102",
     },
   ];
+
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredLeaderbord = leaderbord.filter((user) =>
+    user.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <Flex direction="column" align="center" mt={16}>
       <Text fontSize="4xl" fontWeight="bold">
@@ -52,6 +71,8 @@ export default function Leaderbord() {
       <Input
         placeholder="Search.."
         type="text"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
         w="100%"
         maxW="300px"
         my={8}
@@ -70,13 +91,13 @@ export default function Leaderbord() {
       />
 
       <Flex direction="column">
-        {leaderbord.map((user, index) => (
+        {filteredLeaderbord.map((user) => (
           <Flex
             borderTop="1px solid #454545"
             borderBottom="1px solid #454545"
             p={4}
           >
-            <Text mr={4}>{index + 1}</Text>
+            <Text mr={4}>{user.place}</Text>
             <Text mr={64}>{user.name}</Text>
             <Text>{user.points}</Text>
           </Flex>
