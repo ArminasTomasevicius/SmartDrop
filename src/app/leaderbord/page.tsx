@@ -39,7 +39,7 @@ export default function Leaderbord() {
       points: "0.00102",
     },
     {
-      name: "amacaseybae",
+      name: "amcaseybae",
       points: "0.00102",
     },
   ];
