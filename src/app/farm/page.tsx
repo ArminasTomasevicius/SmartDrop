@@ -17,6 +17,7 @@ import {
   SliderFilledTrack,
   SliderThumb,
   SliderMark,
+  chakra,
 } from "@chakra-ui/react";
 
 export default function Farm() {
@@ -26,6 +27,25 @@ export default function Farm() {
       img: "",
       earned: "-",
       stake: "-",
+      dailyRate: "0.00102",
+      totalStakedLiquidity: "$141M",
+    },
+    {
+      name: "BEAM",
+      img: "",
+      earned: "-",
+      stake: "-",
+      dailyRate: "0.00102",
+      totalStakedLiquidity: "$141M",
+    },
+  ];
+
+  const mockEarnings = [
+    {
+      name: "BEAM",
+      img: "",
+      earned: "12345",
+      stake: "5.398",
       dailyRate: "0.00102",
       totalStakedLiquidity: "$141M",
     },
@@ -56,7 +76,58 @@ export default function Farm() {
 
   return (
     <Flex direction="column" align="center">
-      <Text my={8}>Deposit to earn points</Text>
+      {mockEarnings ? (
+        <>
+          <Text
+            my={8}
+            textTransform="uppercase"
+            fontSize="4xl"
+            fontWeight="bold"
+          >
+            My earnings
+          </Text>
+
+          {mockEarnings.map((farm, index) => (
+            <Flex
+              key={index}
+              w="95%"
+              h={20}
+              mx="auto"
+              align="center"
+              justify="space-between"
+              borderTop="1px solid #454545"
+              borderBottom="1px solid #454545"
+            >
+              <Text px={8}>{farm.name}</Text>
+              <Flex direction="column">
+                <Text fontSize="2xs">Earned</Text>
+                <Text>{farm.earned}</Text>
+              </Flex>
+              <Flex direction="column">
+                <Text fontSize="2xs">My Stake</Text>
+                <Text>{farm.stake}</Text>
+              </Flex>
+              <Flex direction="column">
+                <Text fontSize="2xs">Daily Rate</Text>
+                <Text>{farm.dailyRate}</Text>
+              </Flex>
+              <Flex direction="column">
+                <Text fontSize="2xs">Total Staked Liquidity</Text>
+                <Text>{farm.totalStakedLiquidity}</Text>
+              </Flex>
+              <Flex gap={4}>
+                <Button borderRadius="3xl">Boost</Button>
+                <Button borderRadius="3xl">Manage</Button>
+              </Flex>
+            </Flex>
+          ))}
+        </>
+      ) : (
+        <></>
+      )}
+      <Text my={8} textTransform="uppercase" fontSize="4xl" fontWeight="bold">
+        Deposit to <chakra.span color="#4ae292">earn points</chakra.span>
+      </Text>
 
       {mockFarms.map((farm, index) => (
         <Flex
