@@ -18,6 +18,7 @@ import {
   SliderThumb,
   SliderMark,
   chakra,
+  Spinner,
 } from "@chakra-ui/react";
 
 export default function Farm() {
@@ -61,6 +62,7 @@ export default function Farm() {
 
   const [selectedFarm, setSelectedFarm] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [approvePending, setApprovePending] = useState<boolean>(false);
 
   const [sliderValue, setSliderValue] = useState(50);
 
@@ -72,6 +74,12 @@ export default function Farm() {
   const handleModalClose = () => {
     setIsModalOpen(false);
     setSelectedFarm(null);
+  };
+
+  const handleApproveClick = async () => {
+    setApprovePending(true);
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    setApprovePending(false);
   };
 
   return (
@@ -302,7 +310,13 @@ export default function Farm() {
                   <Text fontSize="sm">3.255</Text>
                 </Flex>
 
-                <Button borderRadius="2xl">Approve</Button>
+                <Button
+                  borderRadius="2xl"
+                  onClick={handleApproveClick}
+                  disabled={approvePending}
+                >
+                  {approvePending ? <Spinner /> : `Approve`}
+                </Button>
               </Flex>
             </Flex>
           </ModalBody>
