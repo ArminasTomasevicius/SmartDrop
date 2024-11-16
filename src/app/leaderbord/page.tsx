@@ -91,8 +91,9 @@ export default function Leaderbord() {
       />
 
       <Flex direction="column">
-        {filteredLeaderbord.map((user) => (
+        {filteredLeaderbord.map((user, index) => (
           <Flex
+            key={index}
             borderTop="1px solid #454545"
             borderBottom="1px solid #454545"
             p={4}
