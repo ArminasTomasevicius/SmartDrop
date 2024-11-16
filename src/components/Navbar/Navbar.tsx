@@ -1,5 +1,6 @@
-import { Flex, Link, Text } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { useAccount } from "wagmi";
+import Link from "next/link";
 
 export default function Navbar({}: {}) {
   const { isConnected, address } = useAccount();
