@@ -12,10 +12,10 @@ export default function Footer({}: {}) {
       position="fixed"
       bottom={5}
       py={5}
-      left="50%" // Center relative to the viewport
-      transform="translateX(-50%)" // Adjust position to center
+      left="50%"
+      transform="translateX(-50%)"
     >
-      <Text px={8}>LOGO</Text>
+      <Text px={8}>SMARTDROP</Text>
       <Text px={8}>2024</Text>
     </Flex>
   );

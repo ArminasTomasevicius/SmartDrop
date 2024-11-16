@@ -2,7 +2,6 @@
 
 import { config } from "@/config";
 import { ChakraProvider } from "@chakra-ui/react";
-import { defaultSystem } from "@chakra-ui/react";
 import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -13,13 +12,13 @@ function ContextProvider({ children }: { children: ReactNode }) {
   const queryClient = new QueryClient();
 
   return (
-    <WagmiProvider config={config}>
-      <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider>
-          <ChakraProvider value={defaultSystem}>{children}</ChakraProvider>
-        </RainbowKitProvider>
-      </QueryClientProvider>
-    </WagmiProvider>
+    <ChakraProvider>
+      <WagmiProvider config={config}>
+        <QueryClientProvider client={queryClient}>
+          <RainbowKitProvider>{children}</RainbowKitProvider>
+        </QueryClientProvider>
+      </WagmiProvider>
+    </ChakraProvider>
   );
 }
 

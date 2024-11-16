@@ -8,7 +8,7 @@ export default function ConnectWalletButton({}: {}) {
     <Button
       bgColor="#4AE292"
       color="#000"
-      borderRadius="4xl"
+      borderRadius="3xl"
       position="fixed"
       bottom="20px"
       right="20px"

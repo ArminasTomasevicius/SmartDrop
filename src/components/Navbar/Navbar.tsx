@@ -34,7 +34,9 @@ export default function Navbar({}: {}) {
           Leaderbord
         </Link>
       </Flex>
-      <Text px={8}>LOGO</Text>
+      <Text px={8} fontWeight="bold">
+        SMARTDROP
+      </Text>
     </Flex>
   ) : (
     <Flex
@@ -46,7 +48,9 @@ export default function Navbar({}: {}) {
       borderTop="1px solid #454545"
       borderBottom="1px solid #454545"
     >
-      <Text px={8}>LOGO</Text>
+      <Text px={8} fontWeight="bold">
+        SMARTDROP
+      </Text>
       <Flex gap={8} p={8}>
         <Text>Users online: 213</Text>
         <Text>Total Users: 30,738</Text>
