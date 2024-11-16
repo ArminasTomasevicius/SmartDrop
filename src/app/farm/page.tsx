@@ -12,6 +12,11 @@ import {
   ModalBody,
   Input,
   Box,
+  Slider,
+  SliderTrack,
+  SliderFilledTrack,
+  SliderThumb,
+  SliderMark,
 } from "@chakra-ui/react";
 
 export default function Farm() {
@@ -36,6 +41,8 @@ export default function Farm() {
 
   const [selectedFarm, setSelectedFarm] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [sliderValue, setSliderValue] = useState(50);
 
   const handleDepositClick = (farm: any) => {
     setSelectedFarm(farm);
@@ -92,21 +99,7 @@ export default function Farm() {
           <ModalCloseButton />
           <ModalBody p={8}>
             <Flex direction="column">
-              <Flex direction="column" py={4}>
-                <Text fontSize="2xs" color="#A2A2A2">
-                  Total Staked Liquidity
-                </Text>
-                <Text>{selectedFarm?.totalStakedLiquidity}</Text>
-              </Flex>
-
-              <Flex direction="column" py={4}>
-                <Text fontSize="2xs" color="#A2A2A2">
-                  Daily Rate (ZP per dollar per day)
-                </Text>
-                <Text>{selectedFarm?.dailyRate}</Text>
-              </Flex>
-
-              <Flex direction="column" gap={4}>
+              <Flex direction="column" gap={8}>
                 <Flex direction="column" gap={2}>
                   <Text fontSize="2xs" color="#A2A2A2">
                     Deposit
@@ -119,12 +112,15 @@ export default function Farm() {
                       h="50px"
                       borderColor="#454545"
                       paddingBottom="16px"
+                      _placeholder={{
+                        color: "#A2A2A2",
+                      }}
                       _hover={{
-                        borderColor: "#4ae292", // Border color on hover
+                        borderColor: "#4ae292",
                       }}
                       _focus={{
                         boxShadow: "none",
-                        borderColor: "#4ae292", // Border color on hover
+                        borderColor: "#4ae292",
                       }}
                       zIndex={1}
                     />
@@ -133,7 +129,7 @@ export default function Farm() {
                       bottom="4px"
                       left="16px"
                       fontSize="xs"
-                      color="gray.500"
+                      color="#A2A2A2"
                     >
                       $3,280.20
                     </Text>
@@ -147,7 +143,7 @@ export default function Farm() {
                       BEAM
                     </Text>
                     <Flex position="absolute" bottom="5px" right="10px" gap={2}>
-                      <Text fontSize="xs" color="gray.500">
+                      <Text fontSize="xs" color="#A2A2A2">
                         Balance: 0($0)
                       </Text>
                       <Text
@@ -162,39 +158,82 @@ export default function Farm() {
                   </Box>
                 </Flex>
 
-                <Input
-                  placeholder="Boost your deposit to earn additional tokens"
-                  sx={{
-                    "::placeholder": {
-                      fontSize: "xs",
-                    },
-                  }}
-                  borderRadius="xl"
-                  borderColor="#454545"
-                />
-                <Input
-                  placeholder="Basic usage"
-                  sx={{
-                    "::placeholder": {
-                      fontSize: "xs",
-                    },
-                  }}
-                  borderRadius="xl"
-                  borderColor="#454545"
-                />
+                <Flex
+                  direction="column"
+                  w="100%"
+                  border="1px solid #454545"
+                  borderRadius="2xl"
+                  p={2}
+                >
+                  <Text fontSize="xs" color="#A2A2A2">
+                    Boost allocation
+                  </Text>
+
+                  {/* Slider */}
+                  <Box py={6}>
+                    <Slider
+                      aria-label="slider-ex-6"
+                      onChange={(val) => setSliderValue(val)}
+                      pt={8}
+                    >
+                      <SliderMark
+                        value={sliderValue}
+                        textAlign="center"
+                        fontSize="xs"
+                        bg="#fff"
+                        color="#000"
+                        mt="-10"
+                        ml="-5"
+                        w="10"
+                      >
+                        {sliderValue}%
+                      </SliderMark>
+                      <SliderTrack>
+                        <SliderFilledTrack bg="#4ae292" />
+                      </SliderTrack>
+                      <SliderThumb />
+                    </Slider>
+                    <Flex justify="space-between">
+                      <Text fontSize="xs" mt="-5">
+                        1%
+                      </Text>
+                      <Text fontSize="xs" mt="-5">
+                        100%
+                      </Text>
+                    </Flex>
+                  </Box>
+
+                  <Flex justify="space-between" fontSize="xs" py={1}>
+                    <Text color="#A2A2A2">Principal Stake</Text>
+                    <Text>1,620,000 S</Text>
+                  </Flex>
+
+                  <Flex justify="space-between" fontSize="xs" py={1}>
+                    <Text color="#A2A2A2">Virtual Stake</Text>
+                    <Text>1,900,000 vS (380,000 x 5)</Text>
+                  </Flex>
+
+                  <Flex justify="space-between" fontSize="xs" py={1}>
+                    <Text color="#A2A2A2">Total Stake</Text>
+                    <Text>3,520,000 S</Text>
+                  </Flex>
+                </Flex>
+
+                <Flex
+                  w="100%"
+                  border="1px solid #454545"
+                  borderRadius="2xl"
+                  p={2}
+                  justify="space-between"
+                  fontSize="xs"
+                >
+                  <Text color="#A2A2A2">Expected Reward Earned Daily</Text>
+                  <Text fontSize="sm">3.255</Text>
+                </Flex>
+
+                <Button borderRadius="2xl">Approve</Button>
               </Flex>
             </Flex>
-            {/* <Text>
-              Are you sure you want to deposit to {selectedFarm?.name}?<br />
-              <strong>Earned:</strong> {selectedFarm?.earned}
-              <br />
-              <strong>My Stake:</strong> {selectedFarm?.stake}
-              <br />
-              <strong>Daily Rate:</strong> {selectedFarm?.dailyRate}
-              <br />
-              <strong>Total Staked Liquidity:</strong>{" "}
-              {selectedFarm?.totalStakedLiquidity}
-            </Text> */}
           </ModalBody>
         </ModalContent>
       </Modal>
