@@ -1,5 +1,9 @@
 # 🌟 SmartDrop: A Liquidity-Based Airdrop Platform
 
+## 🚀 DEMO
+
+https://smartdro-76d78d7c3a78.herokuapp.com/
+
 ## 🚀 Overview
 
 **SmartDrop** is a revolutionary airdrop distribution platform designed to address the inefficiencies of traditional airdrops. Unlike regular airdrops, which are easily exploited by bots and bad actors, SmartDrop creates a fair, incentivized, and community-focused environment. To participate, users must stake ERC20 or LP tokens, aligning their interests with the success of the project. Users can boost their airdrop rewards by donating additional tokens or engaging with the community, ensuring that those who contribute to the ecosystem benefit the most.
@@ -48,6 +52,19 @@ Airdrops today are plagued by inefficiencies—bad actors exploit them, farming 
 
 4. **🎁 Claim Rewards, Retrieve Stake**  
    After the airdrop token launches, users reclaim their original stake alongside their earned airdrop credits.
+
+---
+
+## 🔗 Deployed Smart Contracts
+https://unichain-sepolia.blockscout.com/address/0xC6b69d83DB6d40B3b644436E3A36252801fc0f64#code
+
+https://sepolia.scrollscan.com/address/0xc039C13470be809beD1C2CD42339Ccb22e0970f2#code
+
+https://sepolia.basescan.org/address/0xc039C13470be809beD1C2CD42339Ccb22e0970f2
+
+https://sepolia.lineascan.build/address/0xe640641b8da8A630dd8df25c8fad0A2Ea532eb3e#code
+
+https://explorer.testnet.zircuit.com/address/0xc039C13470be809beD1C2CD42339Ccb22e0970f2#code
 
 ---
 
