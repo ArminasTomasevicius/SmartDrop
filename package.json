@@ -15,6 +15,8 @@
     "@emotion/styled": "^11.13.0",
     "@rainbow-me/rainbowkit": "^2.2.0",
     "@tanstack/react-query": "^5.60.5",
+    "@wagmi/connectors": "^5.4.0",
+    "@wagmi/core": "^2.14.6",
     "framer-motion": "^11.11.17",
     "next": "15.0.3",
     "react": "19.0.0-rc-66855b96-20241106",

@@ -1,6 +1,6 @@
 "use client";
 
-import { config } from "@/config";
+import { wagmiCoreConfig } from "@/config";
 import { ChakraProvider } from "@chakra-ui/react";
 import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -13,7 +13,7 @@ function ContextProvider({ children }: { children: ReactNode }) {
 
   return (
     <ChakraProvider>
-      <WagmiProvider config={config}>
+      <WagmiProvider config={wagmiCoreConfig}>
         <QueryClientProvider client={queryClient}>
           <RainbowKitProvider>{children}</RainbowKitProvider>
         </QueryClientProvider>
