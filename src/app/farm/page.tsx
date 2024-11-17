@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Button,
   Text,
@@ -20,8 +20,15 @@ import {
   chakra,
   Spinner,
 } from "@chakra-ui/react";
+import { useAccount } from "wagmi";
+import { CONTRACT_ADDRESS, wagmiCoreConfig } from "@/config";
+import abi from "../../config/abi.json";
+import childAbi from "../../config/child-abi.json";
+import { getChainId, readContract } from "@wagmi/core";
 
 export default function Farm() {
+  const { address } = useAccount();
+  const chainId = getChainId(wagmiCoreConfig);
   const mockFarms = [
     {
       name: "BEAM",
@@ -66,6 +73,32 @@ export default function Farm() {
 
   const [sliderValue, setSliderValue] = useState(50);
 
+  const getFarms = async () => {
+    const farmAddresses = (await readContract(wagmiCoreConfig, {
+      abi,
+      address: CONTRACT_ADDRESS,
+      chainId: chainId,
+      functionName: "getFarms",
+      args: [],
+    })) as string[];
+
+    // looping through all farms
+    farmAddresses.forEach(async (farmAddress: any) => {
+      // getting farm information
+      const userLockedTokens = await readContract(wagmiCoreConfig, {
+        abi: childAbi,
+        address: farmAddress,
+        chainId: chainId,
+        functionName: "getUserLockedTokens",
+        args: [address],
+      });
+
+      // const farm = {...}
+      // farms.add(farm)
+      // return farms
+    });
+  };
+
   const handleDepositClick = (farm: any) => {
     setSelectedFarm(farm);
     setIsModalOpen(true);
@@ -78,7 +111,9 @@ export default function Farm() {
 
   const handleApproveClick = async () => {
     setApprovePending(true);
+
     await new Promise((resolve) => setTimeout(resolve, 2000));
+
     setApprovePending(false);
   };
 
